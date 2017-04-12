@@ -2,6 +2,7 @@
 !.gitignore
 !cache
 !frontend.sql
+!cjab.sql
 !cache/README.md
 !proxies
 !proxies/README.md
