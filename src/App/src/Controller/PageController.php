@@ -19,6 +19,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Form\Form;
+use Zend\Diactoros\Response\RedirectResponse;
 
 /**
  * Class PageController
@@ -40,15 +41,7 @@ class PageController extends AbstractActionController
      */
     public function indexAction(): ResponseInterface
     {
-        $data = [];
-
-        $data['routerName'] = 'FastRoute';
-        $data['routerDocs'] = 'https://github.com/nikic/FastRoute';
-
-        $data['templateName'] = 'Twig';
-        $data['templateDocs'] = 'http://twig.sensiolabs.org/documentation';
-
-        return new HtmlResponse($this->template('app::home', $data));
+        return new RedirectResponse($this->url('login'));
     }
 
     /**

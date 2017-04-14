@@ -35,11 +35,15 @@
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <!-- parse the main menu -->
-                    {{ navigationPartial('main_menu', 'partial::navigation', {'ulClass' : 'nav navbar-nav navbar-center', 'depth' : 0}) }}
 
-                    <!-- navbar-right with login form or account menu -->
-                    {{ navigationPartial('account_menu', 'partial::navigation', {'ulClass' : 'nav navbar-nav navbar-right', 'depth' : 0}) }}
+                    {% if hasIdentity() %}
+                        <!-- after is logged in he will have some menu bar -->
+                        <!-- parse the main menu -->
+                        {{ navigationPartial('main_menu', 'partial::navigation', {'ulClass' : 'nav navbar-nav navbar-center', 'depth' : 0}) }}
+
+                        <!-- navbar-right with login form or account menu -->
+                        {{ navigationPartial('account_menu', 'partial::navigation', {'ulClass' : 'nav navbar-nav navbar-right', 'depth' : 0}) }}
+                    {% endif %}
 
                     {% if not hasIdentity() %}
                         <div class="navbar-right">
@@ -63,9 +67,6 @@
 
 <footer id="footer" class="app-footer">
     {% block footer %}
-        <p class="enjoy">
-            enjoy dotkernel!
-        </p>
         <p>
             &copy; {{ "now"|date("Y") }} DotKernel by Apidemia
         </p>
